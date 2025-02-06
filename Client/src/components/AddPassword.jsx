@@ -2,14 +2,24 @@ import axios from "axios";
 import React, { useContext, useState } from "react";
 import { FormContext } from "../Context/FormContext";
 
-function AddPassword({ getAllPasswords }) {
-  const { url, setUrl, userId, setUserId, password, setPassword } =
-    useContext(FormContext);
+function AddPassword() {
+  const {
+    url,
+    setUrl,
+    userId,
+    setUserId,
+    password,
+    setPassword,
+    getAllPasswords,
+    editingId,
+    setEditingId,
+  } = useContext(FormContext);
   const base_url = "http://localhost:3000/api/";
 
   const addPassword = async () => {
     const url1 = `http://localhost:3000/api/password/addpassword`;
-    const obj = {
+    let obj = {
+      id: editingId == "" ? null : editingId,
       url,
       userid: userId,
       password,
@@ -21,6 +31,7 @@ function AddPassword({ getAllPasswords }) {
     setUserId("");
     setPassword("");
     getAllPasswords();
+    setEditingId("");
   };
   const handleSubmit = (e) => {
     e.preventDefault();

@@ -1,22 +1,51 @@
 const passwordModel = require("../Models/passwordModel");
 module.exports.addPassword = async (req, res, next) => {
   try {
-    const { url, userid, password } = req.body;
-    const data = await passwordModel.create({
-      url,
-      userid,
-      password,
-    });
-    if (data) {
-      return res.json({
-        error: "false",
-        result: { msg: "Password added successfully" },
-      });
+    const { id, url, userid, password } = req.body;
+    console.log(id);
+    const existingData = await passwordModel.findOne({ _id: id });
+
+    if (existingData) {
+      const updatedData = await passwordModel.updateOne(
+        { _id: id },
+        {
+          $set: {
+            url,
+            userid,
+            password,
+          },
+        }
+      );
+
+      if (updatedData.matchedCount > 0) {
+        return res.json({
+          error: "false",
+          result: { msg: "Password updated successfully" },
+        });
+      } else {
+        return res.json({
+          error: "true",
+          result: { msg: "Update failed, please try again." },
+        });
+      }
     } else {
-      return res.json({
-        error: "true",
-        result: { msg: "Update Failed..." },
+      const data = await passwordModel.create({
+        url,
+        userid,
+        password,
       });
+
+      if (data) {
+        return res.json({
+          error: "false",
+          result: { msg: "Password added successfully" },
+        });
+      } else {
+        return res.json({
+          error: "true",
+          result: { msg: "Creation failed, please try again." },
+        });
+      }
     }
   } catch (ex) {
     next(ex);

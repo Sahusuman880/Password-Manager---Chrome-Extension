@@ -1,12 +1,21 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { FiEdit } from "react-icons/fi";
 import { RiDeleteBinLine } from "react-icons/ri";
 import { BiHide } from "react-icons/bi";
 import { BiShowAlt } from "react-icons/bi";
 import axios from "axios";
+import { FormContext } from "../Context/FormContext";
 
-function RenderPasswords({ passwords, getAllPasswords }) {
+function RenderPasswords() {
   const [toggle, setToggle] = useState(true);
+  const {
+    passwords,
+    getAllPasswords,
+    setUrl,
+    setUserId,
+    setPassword,
+    setEditingId,
+  } = useContext(FormContext);
   const handleDelete = async (id) => {
     console.log("id-->", id);
     const url = `http://localhost:3000/api/password/deletepassword/${id}`;
@@ -14,6 +23,13 @@ function RenderPasswords({ passwords, getAllPasswords }) {
       headers: { "Content-Type": "application/json" },
     });
     getAllPasswords();
+  };
+
+  const handleEdit = (e) => {
+    setUrl(e?.url);
+    setUserId(e?.userid);
+    setPassword(e?.password);
+    setEditingId(e?._id);
   };
   return (
     <div
@@ -76,10 +92,7 @@ function RenderPasswords({ passwords, getAllPasswords }) {
                 </button>
               )}
             </>
-            <button
-              style={{ marginLeft: "2px" }}
-              onClick={() => setEditedObj(e)}
-            >
+            <button style={{ marginLeft: "2px" }} onClick={() => handleEdit(e)}>
               <FiEdit />
             </button>
             <button

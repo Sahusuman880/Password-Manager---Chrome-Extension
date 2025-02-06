@@ -8,6 +8,15 @@ function App() {
   const [url, setUrl] = useState("");
   const [userId, setUserId] = useState("");
   const [password, setPassword] = useState("");
+  const [editingId, setEditingId] = useState("");
+  const getAllPasswords = async () => {
+    const url = `${base_url}password/getpassword`;
+    const data = await axios.get(url);
+    if (data?.status == 200 && data?.data?.error == false) {
+      setPasswords(data?.data?.result);
+      console.log(data?.status, data?.data?.result);
+    }
+  };
 
   let value = {
     passwords,
@@ -18,16 +27,11 @@ function App() {
     setUserId,
     password,
     setPassword,
+    getAllPasswords,
+    editingId,
+    setEditingId,
   };
 
-  const getAllPasswords = async () => {
-    const url = `${base_url}password/getpassword`;
-    const data = await axios.get(url);
-    if (data?.status == 200 && data?.data?.error == false) {
-      setPasswords(data?.data?.result);
-      console.log(data?.status, data?.data?.result);
-    }
-  };
   useEffect(() => {
     getAllPasswords();
   }, []);
