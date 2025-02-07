@@ -10,18 +10,13 @@ function Home() {
           display: "flex",
           alignItems: "center",
           flexDirection: "column",
-          position: "absolute",
-          width: "40vw",
-          height: "100%",
-          right: 0,
           fontSize: "18px",
           backgroundColor: "black",
           color: "white",
         }}
       >
-        <div>
-          <h1>Suman's Password Manager</h1>
-        </div>
+        <h1 style={{ marginBottom: "10px" }}>Suman's Password Manager</h1>
+
         <AddPassword />
         <RenderPasswords />
       </div>

@@ -34,26 +34,27 @@ function RenderPasswords() {
   return (
     <div
       id="scroll"
-      style={{
-        height: "60vh",
-        overflow: passwords?.length > 10 ? "scroll" : "hidden",
-      }}
+      style={{ color: "white" }}
+      // style={{
+      //   height: "60vh",
+      //   overflow: passwords?.length > 10 ? "scroll" : "hidden",
+      // }}
     >
-      <h3 style={{ textAlign: "center" }}>All Saves Password</h3>
+      <h3 style={{ textAlign: "center", margin: "5px 0px" }}>
+        All Saves Password
+      </h3>
       {passwords?.map((e) => {
         return (
           <div
             style={{
-              width: "30vw",
-              height: "30px",
               // border: "2px solid white",
               display: "flex",
               marginBottom: "2px",
+              gap: "20px",
             }}
           >
             <div
               style={{
-                width: "33%",
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
@@ -63,7 +64,6 @@ function RenderPasswords() {
             </div>
             <div
               style={{
-                width: "33%",
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
@@ -73,7 +73,6 @@ function RenderPasswords() {
             </div>
             <div
               style={{
-                width: "33%",
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
@@ -83,20 +82,47 @@ function RenderPasswords() {
             </div>
             <>
               {toggle ? (
-                <button onClick={() => setToggle(false)}>
+                <button
+                  onClick={() => setToggle(false)}
+                  style={{
+                    color: "white",
+                    border: "1px solid white",
+                    width: "5%",
+                  }}
+                >
                   <BiShowAlt />
                 </button>
               ) : (
-                <button onClick={() => setToggle(true)}>
+                <button
+                  onClick={() => setToggle(true)}
+                  style={{
+                    color: "white",
+                    border: "1px solid white",
+                    width: "5%",
+                  }}
+                >
                   <BiHide />
                 </button>
               )}
             </>
-            <button style={{ marginLeft: "2px" }} onClick={() => handleEdit(e)}>
+            <button
+              style={{
+                marginLeft: "2px",
+                color: "white",
+                border: "1px solid white",
+                width: "5%",
+              }}
+              onClick={() => handleEdit(e)}
+            >
               <FiEdit />
             </button>
             <button
-              style={{ marginLeft: "2px" }}
+              style={{
+                marginLeft: "2px",
+                color: "white",
+                border: "1px solid white",
+                width: "5%",
+              }}
               onClick={() => handleDelete(e?._id)}
             >
               <RiDeleteBinLine />

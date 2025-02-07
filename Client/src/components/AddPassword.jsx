@@ -45,12 +45,23 @@ function AddPassword() {
     setPassword("");
   };
   return (
-    <form onSubmit={handleSubmit}>
+    <form
+      onSubmit={handleSubmit}
+      style={{
+        width: "100%",
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "center",
+        alignItems: "center",
+        color: "white",
+      }}
+    >
       <div
         style={{
+          width: "30%",
           display: "flex",
           flexDirection: "column",
-          marginBottom: "10px",
+          marginBottom: "11px",
         }}
       >
         <label htmlFor="website">Website:</label>
@@ -58,10 +69,11 @@ function AddPassword() {
           id="website"
           style={{
             height: "35px",
-            width: "25vw",
+            width: "100%",
             paddingLeft: "10px",
             border: "2px solid red",
             borderRadius: "5px",
+            color: "white",
           }}
           type="text"
           placeholder="Enter website URL"
@@ -71,6 +83,7 @@ function AddPassword() {
       </div>
       <div
         style={{
+          width: "30%",
           display: "flex",
           flexDirection: "column",
           marginBottom: "10px",
@@ -81,10 +94,11 @@ function AddPassword() {
           id="userid"
           style={{
             height: "35px",
-            width: "25vw",
+            width: "100%",
             paddingLeft: "10px",
             border: "2px solid red",
             borderRadius: "5px",
+            color: "white",
           }}
           type="text"
           placeholder="Enter User ID"
@@ -94,6 +108,7 @@ function AddPassword() {
       </div>
       <div
         style={{
+          width: "30%",
           display: "flex",
           flexDirection: "column",
           marginBottom: "10px",
@@ -104,10 +119,11 @@ function AddPassword() {
           id="password"
           style={{
             height: "35px",
-            width: "25vw",
+            width: "100%",
             paddingLeft: "10px",
             border: "2px solid red",
             borderRadius: "5px",
+            color: "white",
           }}
           type="text"
           placeholder="Enter Password"

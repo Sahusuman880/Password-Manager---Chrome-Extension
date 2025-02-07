@@ -40,7 +40,6 @@ function App() {
       <FormContext.Provider value={value}>
         <Home />
       </FormContext.Provider>
-      <div style={{ color: "white" }}>Hello</div>
     </>
   );
 }
